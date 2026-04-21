@@ -1,0 +1,16 @@
+{
+  "name": "stremio-random-episode",
+  "version": "1.0.0",
+  "description": "Stremio addon that returns a random episode for a configured series",
+  "main": "addon.js",
+  "scripts": {
+    "start": "node addon.js",
+    "check": "node --check addon.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "stremio-addon-sdk": "^1.6.10"
+  }
+}
