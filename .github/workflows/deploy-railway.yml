@@ -1,0 +1,14 @@
+name: Deploy Railway
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Railway deploy placeholder
+        run: echo "Railway deployment automation will be implemented in Phase 9"

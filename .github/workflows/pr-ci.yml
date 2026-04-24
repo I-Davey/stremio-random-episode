@@ -1,0 +1,43 @@
+name: Pull Request CI
+
+on:
+  pull_request:
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install backend deps
+        run: |
+          cd backend
+          pip install -e .[dev]
+      - name: Backend lint
+        run: cd backend && ruff check .
+      - name: Backend tests
+        run: cd backend && pytest
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install frontend deps
+        run: cd frontend && npm ci
+      - name: Frontend lint
+        run: cd frontend && npm run lint
+      - name: Frontend typecheck
+        run: cd frontend && npm run typecheck
+
+  tauri-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tauri compile placeholder
+        run: echo "Tauri compile checks will be enabled in Phase 8"
